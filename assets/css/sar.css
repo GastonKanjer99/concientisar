@@ -1,0 +1,77 @@
+/* ===== SAR Explainer (aislado) ===== */
+.sar-demo{display:grid;grid-template-columns:1.15fr 1fr;gap:20px;align-items:stretch}
+@media (max-width:900px){.sar-demo{grid-template-columns:1fr}}
+
+.scene{
+  position:relative; aspect-ratio:16/9;
+  background:#0c1626; border:1px solid var(--border);
+  border-radius:20px; overflow:hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 10px 40px rgba(0,0,0,.40);
+}
+
+/* Imagen de fondo opcional (si hay data-bg) */
+.scene.hasimg{
+  background-image: var(--scene-bg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay uniforme para modo óptico */
+.scene::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background: rgba(0,0,0,.45); opacity:1; transition:.25s; z-index:2;
+}
+.scene.mode-sar::after{ opacity:0; }
+
+/* Chips superiores */
+.sky{position:absolute;top:10px;left:10px;display:flex;gap:8px;z-index:3}
+.tag{padding:4px 10px;border-radius:999px;background:#0a1321d9;color:#d7ffff;font-size:11px;border:1px solid #132538}
+
+/* Suelo + objetos (más compactos) */
+.ground{
+  position:absolute; left:0; right:0; bottom:0; top:64%;
+  display:flex; align-items:flex-end; justify-content:space-evenly; gap:12px; padding:16px;
+  z-index:1;
+}
+.obj{
+  width:24%; height:10%; min-height:68px;
+  border-radius:14px; display:grid; place-items:center;
+  font-size:12px; color:#fff; opacity:.95;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 6px 20px rgba(0,0,0,.35);
+}
+.water{ background:linear-gradient(#0f4572,#0b304d) }
+.grass{ background:linear-gradient(#1b5e20,#0f3d13) }
+.soil { background:linear-gradient(#6e4b2c,#3d2a19) }
+
+/* Barrido: solo en modo SAR y recortado arriba */
+.sweep{
+  position:absolute; left:-20%; top:-20%; width:140%; height:140%;
+  background: conic-gradient(from -20deg, rgba(90,242,195,.22) 0 7deg, rgba(90,242,195,0) 7deg 360deg);
+  animation: sweep 4.5s linear infinite;
+  opacity:0; mix-blend-mode:screen; z-index:0;
+  clip-path: polygon(0 0, 100% 0, 100% 54%, 0 54%); /* no invade las cajas */
+}
+.scene.mode-sar .sweep{ opacity:.35; }
+@keyframes sweep{ to{ transform: rotate(360deg) } }
+
+/* Respuesta SAR (brillos equilibrados) */
+.scene{ --ret-water:.15; --ret-grass:.55; --ret-soil:.75; }
+.scene.mode-sar .water{ filter:brightness(calc(var(--ret-water) + .25)); outline:1px solid rgba(90,242,195,.18); }
+.scene.mode-sar .grass{ filter:brightness(calc(var(--ret-grass) + .15)); outline:1px solid rgba(90,242,195,.18); }
+.scene.mode-sar .soil { filter:brightness(calc(var(--ret-soil)  + .10)); outline:1px solid rgba(90,242,195,.18); }
+
+/* Controles */
+.panel .toggles{display:flex;flex-wrap:wrap;gap:10px;margin:.6rem 0}
+.panel .toggles label{display:flex;align-items:center;gap:6px;font-size:14px}
+.panel select{padding:6px 8px;border-radius:10px;background:#0f1a2b;border:1px solid var(--border);color:#cfeee9}
+
+/* Mapa ocupando toda la escena (de fondo) */
+.map-fill{
+  position:absolute; inset:0; z-index:0;
+  border-radius:20px; overflow:hidden;
+  /* que no robe interacción: */
+  pointer-events:none;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+/* rayo recortado arriba; cajas más chicas ya están en este CSS */

@@ -1,0 +1,50 @@
+<section id="sar-explainer" class="container pad">
+  <h2 class="h2 center">¿Qué es SAR?</h2>
+
+  <div class="sar-demo">
+    <div class="scene"
+      data-bg="https://images.unsplash.com/photo-1469122312224-c5846569feb1?w=1200&auto=format&fit=crop&fm=webp&q=60">
+      <!-- 👇 Mapa de fondo -->
+      <div id="sar-map" class="map-fill"></div>
+
+      <div class="sky">
+        <span class="tag">Nubes</span><span class="tag">Humo</span><span class="tag">Noche</span>
+      </div>
+      <div class="ground">
+        <div class="obj water">Agua</div>
+        <div class="obj grass">Vegetación</div>
+        <div class="obj soil">Suelo</div>
+      </div>
+      <div class="sweep"></div>
+    </div>
+
+    <div class="panel">
+      <p class="text">
+        <b>SAR</b> envía microondas y mide el <b>eco</b>. Funciona <b>de día o de noche</b> y
+        <b>atraviesa nubes/humo</b>. El eco varía según el objetivo: <b>agua</b> (bajo),
+        <b>vegetación</b> (medio), <b>suelo rugoso</b> (alto).
+      </p>
+
+      <div class="toggles">
+        <label><input type="radio" name="mode" value="visible"> Modo óptico</label>
+        <label><input type="radio" name="mode" value="sar" checked> Modo SAR</label>
+
+        <select id="polar" title="Polarización">
+          <option value="VV">Polarización VV</option>
+          <option value="VH">Polarización VH</option>
+        </select>
+
+        <select id="freq" title="Banda">
+          <option value="C">Banda C</option>
+          <option value="L">Banda L</option>
+        </select>
+      </div>
+
+      <ul class="text" style="line-height:1.7;margin:.5rem 0 0">
+        <li><b>Agua</b>: eco débil (oscuro).</li>
+        <li><b>Vegetación</b>: eco medio; sube en <b>VH</b> (dispersión volumétrica).</li>
+        <li><b>Suelo rugoso</b>: eco alto; texturas resaltan en <b>VV</b>.</li>
+      </ul>
+    </div>
+  </div>
+</section>

@@ -72,3 +72,4 @@ a{color:inherit}
 /* Reveal (opcional) */
 .reveal{opacity:0;transform:translateY(8px);transition:.5s ease}
 .reveal.show{opacity:1;transform:none}
+
