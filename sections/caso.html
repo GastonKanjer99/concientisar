@@ -5,19 +5,22 @@
       <h2 class="h2">Delta del Paraná — Regeneración</h2>
       <p class="text">Comparación visual de post-incendio vs estado de regeneración.</p>
 
-      <div class="ba">
-        <img class="ba-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&auto=format&fit=crop&fm=webp&q=65" alt="Regeneración"/>
-        <div class="ba-clip" style="width:50%">
+
+
+<div class="ba">
+          <img class="ba-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1200&auto=format&fit=crop&fm=webp&q=65" alt="Regeneración"/>
+  <div class="ba-clip">  <!-- sin style -->
           <img class="ba-img" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=1200&auto=format&fit=crop&fm=webp&q=65" alt="Post-incendio"/>
-        </div>
-        <div class="ba-label ba-left">POST-INCENDIO</div>
-        <div class="ba-label ba-right">REGENERACIÓN</div>
-        <div class="ba-range">
-          <span>POST-INCENDIO</span>
-          <input type="range" min="0" max="100" value="50" />
-          <span>REGENERACIÓN</span>
-        </div>
-      </div>
+  </div>
+  ...
+  <div class="ba-range">
+    <span>POST-INCENDIO</span>
+    <input type="range" min="0" max="100" value="50" step="1" />
+    <span>REGENERACIÓN</span>
+  </div>
+</div>
+
+
 
       <div class="cards cards-3">
         <div class="card"><div class="card-body"><h3 class="card-title">Índice de humedad (proxy)</h3><div class="kpi">↑ +X%</div></div></div>

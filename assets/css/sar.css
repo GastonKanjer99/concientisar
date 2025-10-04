@@ -75,3 +75,26 @@
 }
 
 /* rayo recortado arriba; cajas más chicas ya están en este CSS */
+
+
+/* Tooltips */
+.tip { position:relative; cursor:default; }
+.tip::after{
+  content: attr(data-tip);
+  position:absolute; left:50%; bottom:100%;
+  transform:translate(-50%,-6px);
+  background:#0b1220dd; color:#e6fffb; font-size:12px;
+  padding:6px 8px; border-radius:10px; border:1px solid var(--border);
+  white-space:nowrap; pointer-events:none; opacity:0; transition:.18s;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+.tip:hover::after{ opacity:1; transform:translate(-50%,-10px); }
+
+#progress {
+  position:fixed; top:0; left:0; height:3px; width:100%;
+  transform-origin:left; transform:scaleX(0);
+  background:linear-gradient(90deg, var(--accent), #65d2ff);
+  z-index:9999;
+}
+
+

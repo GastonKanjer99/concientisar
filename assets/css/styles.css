@@ -60,16 +60,60 @@ a{color:inherit}
 .plot{height:220px;border:1px dashed #2b3b52;border-radius:12px;display:grid;place-items:center;color:#9bded6}
 .foot{color:#88cbc3;font-size:12px;margin-top:8px}
 
-/* Before/After */
-.ba{position:relative;max-width:980px;margin:8px auto 24px;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
-.ba-img{display:block;width:100%;height:420px;object-fit:cover}
-.ba-clip{position:absolute;inset:0;overflow:hidden;border-right:1px solid #fff8}
-.ba-label{position:absolute;top:10px;padding:4px 8px;background:#0009;color:#fff;font-size:12px;border-radius:10px}
-.ba-left{left:10px}.ba-right{right:10px}
-.ba-range{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:10px;color:#fff;text-shadow:0 1px 2px #0008}
-.ba-range input{width:60%}
+/* --- BEFORE/AFTER estable --- */
+.ba{
+  position:relative; aspect-ratio:16/9;
+  max-width:980px; margin:8px auto 24px;
+  border-radius:16px; overflow:hidden;
+  border:1px solid var(--border); background:#000;
+}
+.ba-img{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center;
+}
+/* capa "ANTES" recortada con inset (0..100%) */
+.ba .ba-clip{
+  position:absolute; inset:0;
+  clip-path: inset(0 calc(100% - var(--pos,50%)) 0 0);
+}
+/* línea vertical */
+.ba::after{
+  content:""; position:absolute; top:0; bottom:0;
+  left: calc(var(--pos,50%));
+  width:2px; transform:translateX(-1px);
+  background:rgba(255,255,255,.6); mix-blend-mode:soft-light; pointer-events:none;
+}
+/* slider */
+.ba-range{ position:absolute; left:0; right:0; bottom:12px; display:flex; justify-content:center; gap:10px; color:#fff; text-shadow:0 1px 2px #0008; }
+.ba-range input{ width:60%; } /* solo UI; no afecta el recorte */
+.ba-label{ position:absolute; top:10px; padding:4px 8px; background:#0009; color:#fff; font-size:12px; border-radius:10px; }
+.ba-left{ left:10px } .ba-right{ right:10px }
+
+
 
 /* Reveal (opcional) */
 .reveal{opacity:0;transform:translateY(8px);transition:.5s ease}
 .reveal.show{opacity:1;transform:none}
 
+html { scroll-behavior: smooth; }
+.links a.active{
+  color:#fff; background:#0f1a2b; border:1px solid var(--border);
+  padding:4px 8px; border-radius:10px;
+}
+
+
+/* Sombras coherentes */
+.shadow-soft { box-shadow: 0 8px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); }
+.card       { background:var(--panel); border:1px solid var(--border); border-radius:16px; }
+.card:hover { box-shadow: 0 12px 34px rgba(0,0,0,.40); transform: translateY(-1px); transition:.18s; }
+
+/* Botones: micro-interacción */
+.btn { transition: transform .12s ease, filter .12s ease; }
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+.tl{counter-reset:step; display:grid; gap:14px; max-width:880px; margin:10px auto;}
+.tl li{list-style:none; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 16px; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center;}
+.tl li .t{font-weight:800; color:var(--accent);}
