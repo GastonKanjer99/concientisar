@@ -113,3 +113,25 @@ html { scroll-behavior: smooth; }
 .tl{counter-reset:step; display:grid; gap:14px; max-width:880px; margin:10px auto;}
 .tl li{list-style:none; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 16px; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center;}
 .tl li .t{font-weight:800; color:var(--accent);}
+
+/* CTA POPUP */
+.cta-pop {
+  position: fixed; right: 18px; bottom: 18px; z-index: 40;
+  width: min(360px, 92vw);
+  background: #0d1726cc; backdrop-filter: saturate(140%) blur(6px);
+  border: 1px solid var(--border); border-radius: 16px;
+  padding: 14px; color: var(--text);
+  box-shadow: 0 20px 60px rgba(0,0,0,.45);
+  transform: translateY(16px); opacity: 0; transition: .22s ease;
+}
+.cta-pop.show { transform: translateY(0); opacity: 1; }
+.cta-pop h3 { margin: 0 0 6px; font-size: 18px; }
+.cta-pop p  { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
+.cta-actions { display: flex; gap: 10px; align-items: center; }
+.cta-close {
+  position:absolute; top:8px; right:8px; line-height:1; border:0;
+  background:transparent; color:#9bded6; cursor:pointer; font-size:18px;
+}
+@media (max-width:640px){
+  .cta-pop{ right:12px; left:12px; bottom:12px; }
+}
