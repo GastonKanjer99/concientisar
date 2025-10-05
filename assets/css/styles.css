@@ -8,7 +8,7 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,s
 a{color:inherit}
 
 /* NAV */
-.nav{position:fixed;top:10px;left:0;right:0;z-index:10;display:flex;justify-content:center}
+.nav{position:sticky;top:10px;left:0;right:0;z-index:10;display:flex;justify-content:center}
 .nav-inner{width:min(var(--max),94%);background:#0d1726cc;border:1px solid var(--border);
   padding:8px 12px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;
   backdrop-filter:saturate(140%) blur(6px)}
@@ -32,7 +32,7 @@ a{color:inherit}
 @media (max-width:900px){.grid2{grid-template-columns:1fr}}
 
 /* TYPO */
-.title{font-size:clamp(32px,6vw,60px);line-height:1.05;margin:8px 0 10px}
+.title{font-size:clamp(32px,6vw,60px);line-height:1.05;margin:8px 0 40px}
 .accent{display:block;color:var(--accent)}
 .h2{font-size:clamp(24px,4vw,36px);margin:0 0 10px}
 .lead,.text{color:var(--muted)}
@@ -101,8 +101,30 @@ html { scroll-behavior: smooth; }
 
 /* Sombras coherentes */
 .shadow-soft { box-shadow: 0 8px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); }
-.card       { background:var(--panel); border:1px solid var(--border); border-radius:16px; }
-.card:hover { box-shadow: 0 12px 34px rgba(0,0,0,.40); transform: translateY(-1px); transition:.18s; }
+.card h3 {
+  text-align: center;          /* centra el título */
+  font-size: 1.4rem;           /* lo hace un poco más grande */
+  font-weight: 700;            /* refuerza el peso */
+  margin-bottom: 1rem;         /* separa del contenido */
+  color: #e2e8f0;              /* texto claro sobre fondo oscuro */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;         /* centra el título y bullets si querés */
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 0 0 1px #1e293b;
+  transition: all 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
 
 /* Botones: micro-interacción */
 .btn { transition: transform .12s ease, filter .12s ease; }
@@ -236,7 +258,10 @@ html.modal-open, body.modal-open { overflow:hidden; }
 .cta-pop.center p,
 .cta-modal .cta-card.center p{ margin: 0 0 16px; }
 
-.cta-actions .btn{ min-width: 200px; } /* opcional: botón más protagonista */
+.cta-actions .btn {
+  text-decoration: none;
+  min-width: auto;
+}
 .nav .nav-inner{
   display:flex; align-items:center; justify-content:space-between;
 }
@@ -286,3 +311,90 @@ html.modal-open, body.modal-open { overflow:hidden; }
 .faq-a{ padding:12px 16px 16px; color:#cfeee9 }
 .faq-a p{ margin:0 0 6px }
 .faq-a ul{ margin:6px 0 0 18px }
+/* ====== BAND EXPLORER (aislado) ====== */
+#band-explorer .gee-embed{
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(180deg,#0f172a 0%,#1e293b 100%);
+  box-shadow: 0 0 0 1px #1e293b; /* la clase shadow-soft puede quedarse */
+}
+
+/* Opción A: proporción fija con aspect-ratio (moderno) */
+#band-explorer .gee-aspect{
+  aspect-ratio: 16/9;      /* cambiá a 4/3 o 21/9 si querés */
+  width: 100%;
+  min-height: 460px;       /* asegura altura decente en pantallas chicas */
+  position: relative;
+}
+
+/* Opción B (si necesitás soporte legacy): 
+#band-explorer .gee-aspect{ position:relative; width:100%; }
+#band-explorer .gee-aspect::before{ content:""; display:block; padding-top:56.25%; } 
+*/
+
+#band-explorer .gee-iframe{
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0; display: block;
+}
+
+/* Barra de acciones flotante */
+#band-explorer .gee-actions{
+  position: absolute; left: 16px; top: 16px;
+  display: flex; gap: 12px; align-items: center;
+  background: rgba(2,6,23,.55);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 14px; padding: 8px 10px;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+/* Botones locales (no heredan de otras secciones) */
+#band-explorers .gee-actions .btn { all: unset; } /* si querés reset total */
+#band-explorer .gee-actions .btn{
+  cursor: pointer; user-select: none;
+  border-radius: 12px; font-weight: 700;
+  padding: 10px 14px; line-height: 1;
+}
+#band-explorer .gee-actions .btn-primary{ background:#2ee7b6; color:#052018; }
+#band-explorer .gee-actions .btn-secondary{ background:#0b1220; color:#cbd5e1; }
+#band-explorer .gee-actions .btn:hover{ transform: translateY(-1px); transition: .2s; }
+
+/* --- Leyenda dentro del slider --- */
+.ba { position: relative; } /* por si tu slider no lo tiene */
+
+.ba-legend{
+  position:absolute; top:10px; left:10px; z-index:5;
+  width:min(280px, 42vw); max-height:60%;
+  background:rgba(13,23,38,.92);
+  border:1px solid var(--border);
+  border-radius:12px; padding:10px 12px;
+  color:#e9fffb; box-shadow:0 8px 30px rgba(0,0,0,.35);
+  overflow:auto;  /* por si la lista crece */
+}
+
+/* Colocación a la derecha (opcional) */
+.ba-legend.right{ left:auto; right:10px; }
+
+/* Tipografía y lista */
+.legend-h{ margin:0 0 4px; font-size:14px; }
+.legend-sub{ margin:0 0 8px; font-weight:700; font-size:13px; }
+.legend-list{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+.legend-list li{ display:flex; align-items:center; gap:8px; font-size:13px; }
+
+/* Muestras de color */
+.swatch{
+  width:22px; height:18px; border-radius:4px;
+  background:var(--c); border:1px solid rgba(0,0,0,.35);
+  flex:0 0 22px;
+}
+
+/* En pantallas chicas, la leyenda baja debajo del slider */
+@media (max-width: 720px){
+  .ba-legend{
+    position:static; width:auto; max-height:none;
+    margin-top:8px;
+  }
+}
+
