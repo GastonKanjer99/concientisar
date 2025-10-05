@@ -23,7 +23,7 @@ export function setupCTAPopup({
     el.classList.add("center"); 
     el.innerHTML = `
       <button class="cta-close" aria-label="Cerrar">×</button>
-      <h3>¿Sos productor/a?</h3>
+      <h3>¿Sos productor?</h3>
       <p>Recibí asistencia gratuita para evaluar la regeneración con SAR.</p>
       <div class="cta-actions">
         <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Quiero saber más</a>
@@ -52,7 +52,7 @@ export function setupCTAPopup({
     modal.innerHTML = `
       <div class="cta-card">
         <button class="cta-close" aria-label="Cerrar">×</button>
-        <h3>¿Sos productor/a?</h3>
+        <h3>¿Sos productor?</h3>
         <p>Te acompañamos a medir la regeneración post-incendio con imágenes SAR.</p>
         <div class="cta-actions">
           <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Quiero saber más</a>
