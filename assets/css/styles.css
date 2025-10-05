@@ -219,3 +219,70 @@ html { scroll-behavior: smooth; }
 
 html.modal-open, body.modal-open { overflow:hidden; }
 
+/* === Centrado del CTA === */
+.cta-pop.center,
+.cta-modal .cta-card.center{
+  text-align: center;
+}
+
+.cta-pop.center .cta-actions,
+.cta-modal .cta-card.center .cta-actions{
+  justify-content: center;
+}
+
+.cta-pop.center h3,
+.cta-modal .cta-card.center h3{ margin-bottom: 8px; }
+
+.cta-pop.center p,
+.cta-modal .cta-card.center p{ margin: 0 0 16px; }
+
+.cta-actions .btn{ min-width: 200px; } /* opcional: botón más protagonista */
+.nav .nav-inner{
+  display:flex; align-items:center; justify-content:space-between;
+}
+
+.brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+.brand-logo{
+  height:28px; width:auto; display:block;
+  /* opcional: leve realce sobre fondo oscuro */
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,.04));
+}
+
+@media (min-width:768px){
+  .brand-logo{ height:32px; }
+}
+
+:root{
+  --nav-h: 68px;   /* alto de la barra */
+  --logo-h: 44px;  /* alto del logo en desktop */
+}
+
+.nav{ min-height: var(--nav-h); }
+.nav .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
+
+/* que el logo no se achique por el flex */
+.brand{ display:flex; align-items:center; flex-shrink:0; }
+.brand-logo{
+  display:block;
+  height: var(--logo-h);     /* << controla el tamaño */
+  width: auto;
+}
+
+/* tamaños responsivos */
+@media (max-width: 768px){
+  :root{ --nav-h: 60px; --logo-h: 36px; }
+}
+
+/* === FAQ === */
+.faq-list{ max-width:min(1000px,94vw); margin:12px auto 0; display:grid; gap:10px; }
+.faq-list details{
+  border:1px solid var(--border); border-radius:14px; background:#0c1626; overflow:hidden;
+}
+.faq-list summary{
+  list-style:none; cursor:pointer; padding:14px 16px; font-weight:600; position:relative;
+}
+.faq-list summary::-webkit-details-marker{ display:none }
+.faq-list details[open] summary{ background:#0f1d30 }
+.faq-a{ padding:12px 16px 16px; color:#cfeee9 }
+.faq-a p{ margin:0 0 6px }
+.faq-a ul{ margin:6px 0 0 18px }

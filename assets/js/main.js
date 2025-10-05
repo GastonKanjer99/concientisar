@@ -8,6 +8,7 @@ import { setupScrollSpy } from "./modules/scrollspy.js";
 import { setupProgressBar } from "./modules/progress.js";
 import { setupEmbedFullscreen } from "./modules/embedFullscreen.js";
 import { setupCTAPopup } from "./modules/ctaPopup.js";
+import { setupFaqAccordion } from "./modules/faqAccordion.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
   await includePartials();
@@ -17,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupReveal();
   initBeforeAfter();
   initSarExplainer();
-
+  setupFaqAccordion();
   // extras
   setupScrollSpy();
   setupProgressBar();
@@ -26,8 +27,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   // === CTA: NO mostrar en productores.html ===
   const params = new URLSearchParams(location.search);
   const forceCTA = params.has("cta");
-  const path = location.pathname.replace(/\/+$/, "");          // sin trailing slash
+  const path = location.pathname.replace(/\/+$/, "");
   const isProductores = /(?:^|\/)productores\.html$/.test(path);
+  const isFaqs = /(?:^|\/)faqs\.html$/.test(path);
+
+  if (!isProductores && !isFaqs) {
+    setupCTAPopup({ url: "productores.html", delayMs: 400, variant: "modal" });
+  }
 
   let ctaCtrl = null;
   if (!isProductores) {
@@ -36,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       delayMs: 400,
       variant: "modal",
       storageKey: "cta_prod_v1",
-      oncePerSession: true
+      oncePerSession: true,
     });
   }
 
