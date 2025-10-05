@@ -1,0 +1,30 @@
+<section id="timelapse" class="container pad">
+  <h2 class="h2 center">Timelapse SAR — Delta del Paraná</h2>
+
+  <div class="tl-box shadow-soft">
+    <div class="tl-aspect">
+      <!-- MODO FRAMES: se muestra este <img> -->
+      <img id="tl-frame" alt="Timelapse frame" />
+
+      <!-- MODO VIDEO (se oculta si usás frames) -->
+      <video id="tl-video" playsinline muted preload="metadata" style="display:none"></video>
+
+      <div class="tl-badge" id="tl-label">–</div>
+    </div>
+
+    <div class="tl-controls">
+      <button id="tl-play" class="btn btn-primary" aria-label="Reproducir/Pausar">▶︎</button>
+
+      <input id="tl-range" type="range" min="0" max="0" value="0" step="1" />
+
+      <select id="tl-speed" title="Velocidad">
+        <option value="0.5">0.5×</option>
+        <option value="1" selected>1×</option>
+        <option value="2">2×</option>
+        <option value="4">4×</option>
+      </select>
+
+      <a id="tl-download" class="btn btn-secondary" href="#" target="_blank" rel="noopener">Descargar MP4</a>
+    </div>
+  </div>
+</section>
