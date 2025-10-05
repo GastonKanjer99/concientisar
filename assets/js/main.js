@@ -4,15 +4,13 @@ import { setupLazyBackgrounds } from "./modules/lazyBg.js";
 import { initBeforeAfter } from "./modules/beforeAfter.js";
 import { setupReveal } from "./modules/reveal.js";
 import { initSarExplainer } from "./modules/sarExplainer.js";
-import { setupScrollSpy } from "./modules/scrollspy.js";   // ojo el casing
+import { setupScrollSpy } from "./modules/scrollspy.js";
 import { setupProgressBar } from "./modules/progress.js";
-import { setupCTAPopup } from "./modules/ctaPopup.js";     // ojo el casing
 import { setupEmbedFullscreen } from "./modules/embedFullscreen.js";
-// Opcional: solo si vas a usar la sección timelapse ahora
-// import { initTimelapse } from "./modules/timelapse.js";
+import { setupCTAPopup } from "./modules/ctaPopup.js";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await includePartials();      // carga sections/* una sola vez
+  await includePartials();
 
   // UI base
   setupLazyBackgrounds();
@@ -25,19 +23,26 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupProgressBar();
   setupEmbedFullscreen();
 
-  // CTA modal
-  // antes: setupCTAPopup({...})
-const params = new URLSearchParams(location.search);
-const forceCTA = params.has("cta");
+  // === CTA: NO mostrar en productores.html ===
+  const params = new URLSearchParams(location.search);
+  const forceCTA = params.has("cta");
+  const path = location.pathname.replace(/\/+$/, "");          // sin trailing slash
+  const isProductores = /(?:^|\/)productores\.html$/.test(path);
 
-const cta = setupCTAPopup({
-  url: "productores.html",
-  delayMs: 400,
-  variant: "modal",
-  storageKey: "cta_prod_v1",
-  oncePerSession: true
-});
+  let ctaCtrl = null;
+  if (!isProductores) {
+    ctaCtrl = setupCTAPopup({
+      url: "productores.html",
+      delayMs: 400,
+      variant: "modal",
+      storageKey: "cta_prod_v1",
+      oncePerSession: true
+    });
+  }
 
-if (forceCTA) { cta.reset(); cta.open(); } // http://localhost:5500/?cta=1
-
+  // Forzar desde ?cta=1 (solo cuando NO estás en productores)
+  if (forceCTA && ctaCtrl) {
+    ctaCtrl.reset();
+    ctaCtrl.open();
+  }
 });
