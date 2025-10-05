@@ -7,13 +7,32 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <div data-include="sections/nav.html"></div>
+  <nav class="nav">
+  <div class="nav-inner">
+    <!-- LOGO -->
+    <a href="index.html" class="brand" aria-label="Inicio">
+      <img
+        class="brand-logo"
+        src="assets/img/Logos.png"
+        srcset="assets/img/Logos.png 2x"
+        alt="Humedales + SAR"
+      />
+    </a>
+
+    <div class="links">
+      <a href="#intro">Inicio</a>
+      <a href="#sar-explainer">¿Qué es SAR?</a>
+      <a href="#band-explorer">Explorador</a>
+      <a href="faqs.html">FAQ</a>
+      <a href="productores.html">Productores</a>
+    </div>
+  </div>
+</nav>
 
   <main style="margin-top:64px">
     <div data-include="sections/faqs.html"></div>   <!-- reutiliza tu partial -->
-    <div data-include="sections/footer.html"></div>
   </main>
-
+<footer class="center foot">© 2025 • Storytelling Humedales + SAR — Argentina</footer>
   <script type="module" src="assets/js/main.js"></script>
 </body>
 </html>
