@@ -3,22 +3,23 @@ export function setupCTAPopup({
   delayMs = 3500,
   storageKey = "cta_prod_v1",
   oncePerSession = true,
-  variant = "modal",
+  variant = "modal", 
 } = {}) {
   const store = oncePerSession ? sessionStorage : localStorage;
+
+  if (window.__ctaPopupScheduled || document.documentElement.dataset.ctaScheduled === "1") return;
+  document.documentElement.dataset.ctaScheduled = "1";
+  window.__ctaPopupScheduled = true;
+
   if (store.getItem(storageKey)) return;
 
-  const lockScroll = () => {
-    document.documentElement.style.overflow = "hidden";
-  };
-  const unlockScroll = () => {
-    document.documentElement.style.overflow = "";
-  };
+  const lockScroll = () => { document.documentElement.style.overflow = "hidden"; };
+  const unlockScroll = () => { document.documentElement.style.overflow = ""; };
   let prevFocus = null;
 
   const openToast = () => {
     const el = document.createElement("div");
-    el.className = "cta-pop center"; 
+    el.className = "cta-pop center";
     el.innerHTML = `
       <button class="cta-close" aria-label="Close">×</button>
       <h3>Are you a producer?</h3>
@@ -31,12 +32,9 @@ export function setupCTAPopup({
     const close = () => {
       el.classList.remove("show");
       setTimeout(() => el.remove(), 180);
-      store.setItem(storageKey, "1");
     };
-    el.querySelector(".cta-close").addEventListener("click", close);
-    document.addEventListener("keydown", (e) => e.key === "Escape" && close(), {
-      once: true,
-    });
+    el.querySelector(".cta-close").addEventListener("click", close, { once: true });
+    document.addEventListener("keydown", (e) => e.key === "Escape" && close(), { once: true });
   };
 
   const openModal = () => {
@@ -46,7 +44,6 @@ export function setupCTAPopup({
     modal.className = "cta-modal";
     modal.setAttribute("role", "dialog");
     modal.setAttribute("aria-modal", "true");
-
     modal.innerHTML = `
       <div class="cta-card">
         <button class="cta-close" aria-label="Close">×</button>
@@ -56,7 +53,6 @@ export function setupCTAPopup({
           <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Learn more</a>
         </div>
       </div>`;
-
     document.body.append(backdrop, modal);
     prevFocus = document.activeElement;
     lockScroll();
@@ -64,9 +60,7 @@ export function setupCTAPopup({
       backdrop.classList.add("show");
       modal.classList.add("show");
     });
-    const firstBtn = modal.querySelector(".btn");
-    firstBtn?.focus();
-
+    modal.querySelector(".btn")?.focus();
     const close = () => {
       backdrop.classList.remove("show");
       modal.classList.remove("show");
@@ -76,14 +70,16 @@ export function setupCTAPopup({
         unlockScroll();
         prevFocus?.focus();
       }, 200);
-      store.setItem(storageKey, "1");
     };
-    backdrop.addEventListener("click", close);
-    modal.querySelector(".cta-close").addEventListener("click", close);
-    document.addEventListener("keydown", (e) => e.key === "Escape" && close(), {
-      once: true,
-    });
+    backdrop.addEventListener("click", close, { once: true });
+    modal.querySelector(".cta-close").addEventListener("click", close, { once: true });
+    document.addEventListener("keydown", (e) => e.key === "Escape" && close(), { once: true });
   };
 
-  setTimeout(() => (variant === "modal" ? openModal() : openToast()), delayMs);
+  const show = () => {
+    try { store.setItem(storageKey, "1"); } catch {}
+    if (variant === "modal") openModal(); else openToast();
+  };
+
+  setTimeout(show, delayMs);
 }
