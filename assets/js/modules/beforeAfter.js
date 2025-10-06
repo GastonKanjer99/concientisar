@@ -3,10 +3,9 @@ export function initBeforeAfter(root = document) {
 
   blocks.forEach((wrap) => {
     const clip  = wrap.querySelector(".ba-clip");
-    const range = wrap.querySelector('input[type="range"]'); // opcional
+    const range = wrap.querySelector('input[type="range"]');
     if (!clip) return;
 
-    // Crear manija si no existe
     let handle = wrap.querySelector(".ba-handle");
     if (!handle) {
       handle = document.createElement("button");
@@ -16,7 +15,7 @@ export function initBeforeAfter(root = document) {
       wrap.appendChild(handle);
     }
 
-    let pos = Number(range?.value ?? 50); // 0..100
+    let pos = Number(range?.value ?? 50); 
 
     const clamp = (v) => Math.max(0, Math.min(100, v));
     const set = (v, syncRange = true) => {
@@ -27,13 +26,12 @@ export function initBeforeAfter(root = document) {
       if (range && syncRange) range.value = String(Math.round(pos));
     };
 
-    // Conversión de coordenada X a % relativo al contenedor
     const xToPercent = (clientX) => {
       const rect = wrap.getBoundingClientRect();
       return ((clientX - rect.left) / rect.width) * 100;
     };
 
-    // Drag con pointer events
+    
     const onPointerDown = (e) => {
       e.preventDefault();
       set(xToPercent(e.clientX));
@@ -43,24 +41,24 @@ export function initBeforeAfter(root = document) {
     const onPointerMove = (e) => set(xToPercent(e.clientX));
     const onPointerUp   = () => window.removeEventListener("pointermove", onPointerMove);
 
-    // Click en cualquier parte del before/after
+   
     wrap.addEventListener("pointerdown", (e) => {
-      // si clickeaste la manija, igual funciona
+      
       onPointerDown(e);
     });
 
-    // Teclado en la manija
+    
     handle.addEventListener("keydown", (e) => {
       if (e.key === "ArrowLeft")  { set(pos - 2); }
       if (e.key === "ArrowRight") { set(pos + 2); }
       if (e.key === "Home")       { set(0); }
       if (e.key === "End")        { set(100); }
-      if (e.key === " ")          { set(50); e.preventDefault(); } // barra = centro
+      if (e.key === " ")          { set(50); e.preventDefault(); } 
     });
 
-    // Si mantenés el <input type="range">
+    
     range?.addEventListener("input", (e) => set(Number(e.target.value), false));
 
-    set(pos); // init
+    set(pos); 
   });
 }

@@ -7,7 +7,7 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
 a{color:inherit}
 
-/* NAV */
+
 .nav{position:sticky;top:10px;left:0;right:0;z-index:10;display:flex;justify-content:center}
 .nav-inner{width:min(var(--max),94%);background:#0d1726cc;border:1px solid var(--border);
   padding:8px 12px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;
@@ -16,12 +16,12 @@ a{color:inherit}
 .links a{font-size:12px;color:#a8dcd5;text-decoration:none;margin-left:12px}
 .links a:hover{color:#fff}
 
-/* LAYOUT */
+
 .container{width:min(var(--max),94%);margin:0 auto}
 .center{text-align:center}
 .pad{padding:64px 0}
 
-/* FULL sections con lazy background */
+
 .full{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;
   background:linear-gradient(180deg,#0b1220,#0b1220)}
 .full.hasbg{background-image:var(--bg-url),linear-gradient(180deg,#0b1220,#0b1220);
@@ -31,13 +31,13 @@ a{color:inherit}
 .grid2{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
 @media (max-width:900px){.grid2{grid-template-columns:1fr}}
 
-/* TYPO */
+
 .title{font-size:clamp(32px,6vw,60px);line-height:1.05;margin:8px 0 40px}
 .accent{display:block;color:var(--accent)}
 .h2{font-size:clamp(24px,4vw,36px);margin:0 0 10px}
 .lead,.text{color:var(--muted)}
 
-/* UI mínima */
+
 .btn{border:0;border-radius:16px;padding:10px 16px;font-weight:800;cursor:pointer}
 .btn-primary{background:var(--accent);color:#06221a}
 .btn-primary:hover{filter:brightness(0.95)}
@@ -45,7 +45,7 @@ a{color:inherit}
 .btn-secondary:hover{border-color:#314460}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
-/* Cards + KPIs */
+
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .cards-3{grid-template-columns:repeat(3,1fr)}
 @media (max-width:900px){.cards,.cards-3{grid-template-columns:1fr}}
@@ -54,25 +54,25 @@ a{color:inherit}
 .card-title{margin:0 0 8px;font-size:16px}
 .kpi{font-size:28px;font-weight:900}
 
-/* Chips y utilidades */
+
 .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#0f2a25;color:#84ffe8;
   border:1px solid #1a4d43;font-size:12px;font-weight:800}
 .plot{height:220px;border:1px dashed #2b3b52;border-radius:12px;display:grid;place-items:center;color:#9bded6}
 .foot{color:#88cbc3;font-size:12px;margin-top:8px}
 
-/* --- BEFORE/AFTER estable --- */
-/* --- Split-view con handle central --- */
+
+
 .ba{ position:relative; aspect-ratio:16/9; max-width:980px; margin:8px auto 24px;
      border-radius:16px; overflow:hidden; border:1px solid var(--border); background:#000;
      cursor: ew-resize; user-select:none; }
 .ba-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
 .ba .ba-clip{ position:absolute; inset:0; clip-path: inset(0 calc(100% - var(--pos,50%)) 0 0); }
 
-/* Línea divisoria */
+
 .ba::after{ content:""; position:absolute; top:0; bottom:0; left:calc(var(--pos,50%));
   width:2px; transform:translateX(-1px); background:rgba(255,255,255,.75); mix-blend-mode:soft-light; pointer-events:none; }
 
-/* Manija central */
+
 .ba-handle{ position:absolute; top:50%; left:calc(var(--pos,50%));
   transform:translate(-50%,-50%); width:44px; height:44px; border-radius:50%;
   border:1px solid #1e2c3f; background:#ecf7f6; box-shadow:0 8px 24px rgba(0,0,0,.35);
@@ -82,13 +82,13 @@ a{color:inherit}
 .ba-handle::after { border-left:8px solid #1e2c3f; margin-left:6px; }
 .ba-handle:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
 
-/* Ocultar el control de rango inferior (si lo tenés en el HTML) */
+
 .ba .ba-range{ display:none; }
 
 
 
 
-/* Reveal (opcional) */
+
 .reveal{opacity:0;transform:translateY(8px);transition:.5s ease}
 .reveal.show{opacity:1;transform:none}
 
@@ -99,21 +99,21 @@ html { scroll-behavior: smooth; }
 }
 
 
-/* Sombras coherentes */
+
 .shadow-soft { box-shadow: 0 8px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03); }
 .card h3 {
-  text-align: center;          /* centra el título */
-  font-size: 1.4rem;           /* lo hace un poco más grande */
-  font-weight: 700;            /* refuerza el peso */
-  margin-bottom: 1rem;         /* separa del contenido */
-  color: #e2e8f0;              /* texto claro sobre fondo oscuro */
+  text-align: center;          
+  font-size: 1.4rem;           
+  font-weight: 700;            
+  margin-bottom: 1rem;         
+  color: #e2e8f0;              
 }
 
 .card {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;         /* centra el título y bullets si querés */
+  align-items: center;         
   background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
   border-radius: 16px;
   padding: 2rem;
@@ -126,7 +126,7 @@ html { scroll-behavior: smooth; }
 }
 
 
-/* Botones: micro-interacción */
+
 .btn { transition: transform .12s ease, filter .12s ease; }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
@@ -136,7 +136,7 @@ html { scroll-behavior: smooth; }
 .tl li{list-style:none; background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 16px; display:grid; grid-template-columns:auto 1fr; gap:10px; align-items:center;}
 .tl li .t{font-weight:800; color:var(--accent);}
 
-/* CTA POPUP */
+
 .cta-pop {
   position: fixed; right: 18px; bottom: 18px; z-index: 40;
   width: min(360px, 92vw);
@@ -158,7 +158,7 @@ html { scroll-behavior: smooth; }
   .cta-pop{ right:12px; left:12px; bottom:12px; }
 }
 
-/* === CTA MODAL centrado === */
+
 .cta-backdrop{
   position:fixed; inset:0; background:rgba(0,0,0,.55);
   backdrop-filter: blur(2px);
@@ -188,7 +188,7 @@ html { scroll-behavior: smooth; }
   color:#9bded6; font-size:20px; cursor:pointer; line-height:1;
 }
 
-/* ===== Timelapse ===== */
+
 .tl-box{ max-width: min(1100px, 94vw); margin: 10px auto 0; }
 .tl-aspect{
   position:relative; aspect-ratio: 16/9; background:#000;
@@ -209,7 +209,7 @@ html { scroll-behavior: smooth; }
   background:#5af2c3; border:1px solid #1b2d3f; }
 #tl-speed{ padding:6px 8px; border-radius:10px; background:#0f1a2b; border:1px solid var(--border); color:#cfeee9; }
 
-/* --- GEE embed --- */
+
 .gee-embed{ max-width:min(1100px,94vw); margin:0 auto; padding:10px; }
 .gee-aspect{
   position:relative; aspect-ratio:16/9; background:#000;
@@ -218,7 +218,7 @@ html { scroll-behavior: smooth; }
 .gee-iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 .gee-actions{ display:flex; gap:10px; justify-content:flex-end; padding:10px 4px 0; }
 
-/* --- Fullscreen modal para el iframe --- */
+
 .embed-fs-backdrop{
   position:fixed; inset:0; background:rgba(0,0,0,.6); backdrop-filter:blur(2px);
   opacity:0; pointer-events:none; transition:.2s ease; z-index:70;
@@ -241,7 +241,7 @@ html { scroll-behavior: smooth; }
 
 html.modal-open, body.modal-open { overflow:hidden; }
 
-/* === Centrado del CTA === */
+
 .cta-pop.center,
 .cta-modal .cta-card.center{
   text-align: center;
@@ -269,7 +269,7 @@ html.modal-open, body.modal-open { overflow:hidden; }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
 .brand-logo{
   height:28px; width:auto; display:block;
-  /* opcional: leve realce sobre fondo oscuro */
+  
   filter: drop-shadow(0 1px 0 rgba(255,255,255,.04));
 }
 
@@ -278,27 +278,27 @@ html.modal-open, body.modal-open { overflow:hidden; }
 }
 
 :root{
-  --nav-h: 68px;   /* alto de la barra */
-  --logo-h: 44px;  /* alto del logo en desktop */
+  --nav-h: 68px;   
+  --logo-h: 44px;  
 }
 
 .nav{ min-height: var(--nav-h); }
 .nav .nav-inner{ display:flex; align-items:center; justify-content:space-between; }
 
-/* que el logo no se achique por el flex */
+
 .brand{ display:flex; align-items:center; flex-shrink:0; }
 .brand-logo{
   display:block;
-  height: var(--logo-h);     /* << controla el tamaño */
+  height: var(--logo-h);     
   width: auto;
 }
 
-/* tamaños responsivos */
+
 @media (max-width: 768px){
   :root{ --nav-h: 60px; --logo-h: 36px; }
 }
 
-/* === FAQ === */
+
 .faq-list{ max-width:min(1000px,94vw); margin:12px auto 0; display:grid; gap:10px; }
 .faq-list details{
   border:1px solid var(--border); border-radius:14px; background:#0c1626; overflow:hidden;
@@ -311,27 +311,24 @@ html.modal-open, body.modal-open { overflow:hidden; }
 .faq-a{ padding:12px 16px 16px; color:#cfeee9 }
 .faq-a p{ margin:0 0 6px }
 .faq-a ul{ margin:6px 0 0 18px }
-/* ====== BAND EXPLORER (aislado) ====== */
+
 #band-explorer .gee-embed{
   position: relative;
   border-radius: 18px;
   overflow: hidden;
   background: linear-gradient(180deg,#0f172a 0%,#1e293b 100%);
-  box-shadow: 0 0 0 1px #1e293b; /* la clase shadow-soft puede quedarse */
+  box-shadow: 0 0 0 1px #1e293b; 
 }
 
-/* Opción A: proporción fija con aspect-ratio (moderno) */
+
 #band-explorer .gee-aspect{
-  aspect-ratio: 16/9;      /* cambiá a 4/3 o 21/9 si querés */
+  aspect-ratio: 16/9;      
   width: 100%;
-  min-height: 460px;       /* asegura altura decente en pantallas chicas */
+  min-height: 460px;       
   position: relative;
 }
 
-/* Opción B (si necesitás soporte legacy): 
-#band-explorer .gee-aspect{ position:relative; width:100%; }
-#band-explorer .gee-aspect::before{ content:""; display:block; padding-top:56.25%; } 
-*/
+
 
 #band-explorer .gee-iframe{
   position: absolute; inset: 0;
@@ -339,7 +336,7 @@ html.modal-open, body.modal-open { overflow:hidden; }
   border: 0; display: block;
 }
 
-/* Barra de acciones flotante */
+
 #band-explorer .gee-actions{
   position: absolute; left: 16px; top: 16px;
   display: flex; gap: 12px; align-items: center;
@@ -350,8 +347,8 @@ html.modal-open, body.modal-open { overflow:hidden; }
   z-index: 10;
 }
 
-/* Botones locales (no heredan de otras secciones) */
-#band-explorers .gee-actions .btn { all: unset; } /* si querés reset total */
+
+#band-explorers .gee-actions .btn { all: unset; } 
 #band-explorer .gee-actions .btn{
   cursor: pointer; user-select: none;
   border-radius: 12px; font-weight: 700;
@@ -361,8 +358,8 @@ html.modal-open, body.modal-open { overflow:hidden; }
 #band-explorer .gee-actions .btn-secondary{ background:#0b1220; color:#cbd5e1; }
 #band-explorer .gee-actions .btn:hover{ transform: translateY(-1px); transition: .2s; }
 
-/* --- Leyenda dentro del slider --- */
-.ba { position: relative; } /* por si tu slider no lo tiene */
+
+.ba { position: relative; } 
 
 .ba-legend{
   position:absolute; top:10px; left:10px; z-index:5;
@@ -371,30 +368,29 @@ html.modal-open, body.modal-open { overflow:hidden; }
   border:1px solid var(--border);
   border-radius:12px; padding:10px 12px;
   color:#e9fffb; box-shadow:0 8px 30px rgba(0,0,0,.35);
-  overflow:auto;  /* por si la lista crece */
+  overflow:auto;  
 }
 
-/* Colocación a la derecha (opcional) */
+
 .ba-legend.right{ left:auto; right:10px; }
 
-/* Tipografía y lista */
+
 .legend-h{ margin:0 0 4px; font-size:14px; }
 .legend-sub{ margin:0 0 8px; font-weight:700; font-size:13px; }
 .legend-list{ list-style:none; margin:0; padding:0; display:grid; gap:8px; }
 .legend-list li{ display:flex; align-items:center; gap:8px; font-size:13px; }
 
-/* Muestras de color */
+
 .swatch{
   width:22px; height:18px; border-radius:4px;
   background:var(--c); border:1px solid rgba(0,0,0,.35);
   flex:0 0 22px;
 }
 
-/* En pantallas chicas, la leyenda baja debajo del slider */
+
 @media (max-width: 720px){
   .ba-legend{
     position:static; width:auto; max-height:none;
     margin-top:8px;
   }
 }
-

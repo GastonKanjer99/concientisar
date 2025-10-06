@@ -29,10 +29,8 @@ function setMode() {
   const isSAR = ([...radios].find(r => r.checked)?.value || "visible") === "sar";
   scene.classList.toggle("mode-sar", isSAR);
 
-  // Polar solo en SAR
   polar.disabled = !isSAR;
 
-  // Overlay: 0 en ambos modos (o poné 0.1 si querés algo leve en óptico)
   scene.style.setProperty("--dim", isSAR ? "0" : "0");
 
   updateReturns();
@@ -49,7 +47,7 @@ function setMode() {
 
   function updateReturns() {
     let water = 0.15, grass = 0.55, soil = 0.75;
-    if (polar.value === "VH") grass += 0.12; // sólo efecto de polarización
+    if (polar.value === "VH") grass += 0.12; 
     const clamp = v => Math.max(0.05, Math.min(1, v));
     scene.style.setProperty("--ret-water", clamp(water));
     scene.style.setProperty("--ret-grass", clamp(grass));
@@ -59,5 +57,5 @@ function setMode() {
   radios.forEach(r => r.addEventListener("change", setMode));
   polar.addEventListener("change", () => { updateReturns(); updateBackground(); });
 
-  setMode(); // init
+  setMode(); 
 }
