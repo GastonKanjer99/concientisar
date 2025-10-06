@@ -1,9 +1,9 @@
-Web Site: https://concientisar.netlify.app/
+[Web Site](https://concientisar.netlify.app/)
 
 Español
-Documentación: https://tinyurl.com/2jrfuuzv
-Presentación en Canva: https://tinyurl.com/3825e7nj
+[Documentación](https://docs.google.com/document/d/1Nx9t3hA60h5Nn-RzJ81RPYQccmkUzeToLPm-4Y6EEoQ/edit?tab=t.0)
+[Presentación en Canva](https://www.canva.com/design/DAG08WusUsk/yP19EbOqC3J06iXx6a4B5A/edit)
 
 English
-Documentation: https://tinyurl.com/yzv9kpe9
-Canva presentation: https://tinyurl.com/mrsnjc26
+[Documentation](https://docs.google.com/document/d/1zuwalp1RLlBQ7OiOp45CiqLKuLuXwLLyjW36oFyg-o4/edit?tab=t.0#heading=h.rotbcpd371ow)
+[Canva presentation](https://www.canva.com/design/DAG0-iVtSLM/UXop92kCNR3CilhTLpky-A/edit)
