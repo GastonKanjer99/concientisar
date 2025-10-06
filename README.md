@@ -89,6 +89,23 @@ Our platform is a Google Earth Engine web application that performs multi-tempor
 - [NASA Earthdata Search](https://search.earthdata.nasa.gov/search)
 - [NASA Applied Remote Sensing Training (ARSET) Trainings](https://appliedsciences.nasa.gov/get-involved/training)
 
+## Space Agency Partner & Other Data
+- [MODIS Thermal Anomalies and Fire Daily Global 1km](https://lpdaac.usgs.gov/products/mod14a1v006/)
+- [NASA Earthdata - MODIS Fire Products](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data)
+- [Copernicus Sentinel-1 SAR GRD](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S1_GRD)
+- [Copernicus Sentinel-2 MSI Surface Reflectance](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED)
+- [Sentinel Online - Sentinel-1 Technical Guide](https://sentinels.copernicus.eu/web/sentinel/technical-guides/sentinel-1-sar)
+- [ALOS-2 PALSAR-2 ScanSAR L-band SAR](https://developers.google.com/earth-engine/datasets/catalog/JAXA_ALOS_PALSAR-2_Level2_2_ScanSAR)
+- [JAXA ALOS-2 Mission Overview](https://www.eorc.jaxa.jp/ALOS-2/en/about/overview.htm)
+- [JRC Global Surface Water Dataset](https://developers.google.com/earth-engine/datasets/catalog/JRC_GSW1_4_GlobalSurfaceWater)
+- [EC JRC Global Surface Water Explorer](https://global-surface-water.appspot.com/)
+- [Google Earth Engine Platform](https://earthengine.google.com/)
+- [Google Earth Engine Code Editor](https://code.earthengine.google.com/)
+- [Google Earth Engine JavaScript API Documentation](https://developers.google.com/earth-engine/guides/getstarted)
+- [Normalized Burn Ratio (NBR) - USGS](https://www.usgs.gov/landsat-missions/landsat-normalized-burn-ratio)
+- [SAR Handbook - Comprehensive Methodologies for Forest Monitoring](https://servirglobal.net/Global/Articles/Article/2674/sar-handbook-comprehensive-methodologies-for-forest-monitoring-and-biomass-estimation)
+
+
 ### 👩‍🔬 Team
 - Altuzarra, Ernesto Tomas
 - Gomez, Maximiliano
