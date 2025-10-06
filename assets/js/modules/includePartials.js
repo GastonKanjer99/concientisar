@@ -5,9 +5,9 @@ export async function includePartials() {
       const url = el.getAttribute("data-include");
       try {
         const html = await fetch(url).then((r) => r.text());
-        el.outerHTML = html; // reemplaza el placeholder por el contenido
+        el.outerHTML = html;
       } catch (e) {
-        el.innerHTML = `<div class="container pad"><p class="text">No se pudo cargar ${url}</p></div>`;
+        el.innerHTML = `<div class="container pad"><p class="text">Failed to load ${url}</p></div>`;
       }
     })
   );

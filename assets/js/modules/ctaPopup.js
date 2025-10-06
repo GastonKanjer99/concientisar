@@ -3,12 +3,11 @@ export function setupCTAPopup({
   delayMs = 3500,
   storageKey = "cta_prod_v1",
   oncePerSession = true,
-  variant = "modal", // "modal" | "toast"
+  variant = "modal",
 } = {}) {
   const store = oncePerSession ? sessionStorage : localStorage;
   if (store.getItem(storageKey)) return;
 
-  // Helpers para bloquear scroll y foco
   const lockScroll = () => {
     document.documentElement.style.overflow = "hidden";
   };
@@ -19,14 +18,13 @@ export function setupCTAPopup({
 
   const openToast = () => {
     const el = document.createElement("div");
-    el.className = "cta-pop";
-    el.classList.add("center"); 
+    el.className = "cta-pop center"; 
     el.innerHTML = `
-      <button class="cta-close" aria-label="Cerrar">×</button>
-      <h3>¿Sos productor?</h3>
-      <p>Recibí asistencia gratuita para evaluar la regeneración con SAR.</p>
+      <button class="cta-close" aria-label="Close">×</button>
+      <h3>Are you a producer?</h3>
+      <p>Get free assistance to assess regeneration with SAR imagery.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Quiero saber más</a>
+        <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Learn more</a>
       </div>`;
     document.body.appendChild(el);
     requestAnimationFrame(() => el.classList.add("show"));
@@ -51,11 +49,11 @@ export function setupCTAPopup({
 
     modal.innerHTML = `
       <div class="cta-card">
-        <button class="cta-close" aria-label="Cerrar">×</button>
-        <h3>¿Sos productor?</h3>
-        <p>Te acompañamos a medir la regeneración post-incendio con imágenes SAR.</p>
+        <button class="cta-close" aria-label="Close">×</button>
+        <h3>Are you a producer?</h3>
+        <p>We help you measure post-fire regeneration using SAR images.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Quiero saber más</a>
+          <a class="btn btn-primary" href="${url}" target="_blank" rel="noopener">Learn more</a>
         </div>
       </div>`;
 
