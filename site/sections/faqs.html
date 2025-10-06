@@ -1,0 +1,133 @@
+<section id="faqs" class="container pad">
+  <h2 class="h2 center">Frequently Asked Questions</h2>
+  <p class="text center muted">Quick answers about sensors, layers, indicators, and how to read the maps.</p>
+
+  <div class="faq-list">
+
+    <details>
+      <summary>Which bands/sensors do we use and why?</summary>
+      <div class="faq-a">
+        <p><b>C-band radar (Sentinel-1: VV, VH)</b> to observe water/smooth surfaces (VV) and vegetation/moisture (VH). 
+           <b>L-band radar (ALOS-2: HH, HV)</b> penetrates canopy and measures woody structure/biomass (HV). 
+           <b>Optical (Sentinel-2)</b> provides NDVI and dNBR.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why do we show those two example comparisons?</summary>
+      <div class="faq-a">
+        <p>We use <b>C-band (VH)</b> for rapid vegetation and moisture changes, and <b>L-band (HV)</b> for deep structural damage. Together they give a more robust reading: surface + structure.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Which satellites/datasets are included in the analysis?</summary>
+      <div class="faq-a">
+        <ul>
+          <li><b>Sentinel-1</b> (radar) every 6–12 days</li>
+          <li><b>ALOS-2 PALSAR-2</b> (L radar) annually</li>
+          <li><b>Sentinel-2</b> (optical) every ~5 days</li>
+          <li><b>MODIS Fire</b> (active fires) and <b>JRC Surface Water</b> (water mask)</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>How many bands/polarizations and indices do we use?</summary>
+      <div class="faq-a">
+        <p>Radar: <b>VV, VH, HH, HV</b>. Optical: <b>Red, NIR, SWIR1, SWIR2</b>. Indices: <b>NDVI, NBR/dNBR</b> and radar deltas.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How many layer combinations can be generated?</summary>
+      <div class="faq-a">
+        <p>C-band: 6 temporal comparisons (VV/VH). L-band: 2 (HH/HV 2020→2023). Optical: 2 main indices. <b>+10 layers</b> total.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>How many hectares were burned and what recovered?</summary>
+      <div class="faq-a">
+        <p>Estimated 2020–2024: <b>&gt;930,000 ha</b> affected. 64% of 2022 occurred between Sept–Oct. 
+           We see <b>partial recovery</b>: surface greening (NDVI) but lower woody structure (L-band).</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What is biomass and what exactly do we show?</summary>
+      <div class="faq-a">
+        <p><b>Biomass</b> = living organic matter (trunks, branches, leaves). We show <b>relative changes</b>:
+           L-band (HV) 2020 vs 2023 for woody structure, and C-band/NDVI for green cover/moisture.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Were native species lost?</summary>
+      <div class="faq-a">
+        <p>Satellite detects <b>cover/structure</b>, not species. Signs of forest loss: <b>high dNBR</b>, persistent drop in <b>L-band (HV)</b> and low <b>NDVI</b>. Confirmation requires field and very high-resolution data.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What is the study area?</summary>
+      <div class="faq-a">
+        <p>The entire Paraná Delta, approx. <b>17,500 km²</b>, from Diamante (Entre Ríos) to Río de la Plata.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What is NDVI and how to interpret it?</summary>
+      <div class="faq-a">
+        <p>NDVI measures "greenness" (NIR vs red). Typical values: <b>0.6–0.9</b> dense vegetation; <b>0.2–0.6</b> grasslands; <b>&lt;0.2</b> soil/water/burned areas.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What is dNBR and how to read it?</summary>
+      <div class="faq-a">
+        <p>dNBR measures <b>burn severity</b> (before vs after). Guideline thresholds: <b>&gt;0.4</b> severe; <b>0.1–0.4</b> moderate; <b>&lt;0.1</b> unchanged/recovered.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What does “delta” mean in the code?</summary>
+      <div class="faq-a">
+        <p>It's the <b>temporal difference</b> (e.g., <code>VH_2024 − VH_2020</code> or <code>NDVI_2024 − NDVI_2020</code>). Positive: increase/recovery; negative: loss.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What do VV, VH, HH, HV mean?</summary>
+      <div class="faq-a">
+        <p><b>VV</b> smooth surfaces/water; <b>VH</b> vegetation/volume; <b>HH</b> horizontal structures; <b>HV</b> woody biomass.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Why do some images appear “cut” diagonally?</summary>
+      <div class="faq-a">
+        <p>Radar acquires oblique swaths; with few scenes or a single orbit, a diagonal edge appears. To mitigate: expand temporal window, combine orbits, and adjust angle mask.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Technical details (periods and filters)</summary>
+      <div class="faq-a">
+        <ul>
+          <li>Periods: <b>pre</b> (Aug-2020), <b>during</b> (Oct-2020), <b>post</b> (Aug-2024).</li>
+          <li>Filters: S1 IW mode, ascending orbits, 30–45°; S2 clouds &lt;30%; water mask &gt;80%.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>Limitations and how to interpret colors</summary>
+      <div class="faq-a">
+        <p><b>Limitations:</b> NDVI saturates; radar is relative and environment-sensitive; wetlands vary by water; no field = no species. 
+           <b>Colors:</b> 🔴 loss, ⚪ unchanged, 🟢 recovery. Recommended: cross layers and validate with context/photos.</p>
+      </div>
+    </details>
+
+  </div>
+</section>

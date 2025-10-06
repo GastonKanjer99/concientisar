@@ -13,18 +13,15 @@ import { setupFaqAccordion } from "./modules/faqAccordion.js";
 document.addEventListener("DOMContentLoaded", async () => {
   await includePartials();
 
-  // UI base
   setupLazyBackgrounds();
   setupReveal();
   initBeforeAfter();
   initSarExplainer();
   setupFaqAccordion();
-  // extras
   setupScrollSpy();
   setupProgressBar();
   setupEmbedFullscreen();
 
-  // === CTA: NO mostrar en productores.html ===
   const params = new URLSearchParams(location.search);
   const forceCTA = params.has("cta");
   const path = location.pathname.replace(/\/+$/, "");
@@ -46,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Forzar desde ?cta=1 (solo cuando NO estás en productores)
   if (forceCTA && ctaCtrl) {
     ctaCtrl.reset();
     ctaCtrl.open();

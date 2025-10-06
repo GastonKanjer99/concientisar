@@ -1,4 +1,3 @@
-// assets/js/modules/faqAccordion.js
 export function setupFaqAccordion(rootSel = "#faqs") {
   const root = document.querySelector(rootSel);
   if (!root) return;

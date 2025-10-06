@@ -5,25 +5,21 @@ export function setupEmbedFullscreen(selector = ".js-gee-fs") {
     if (!wrap || !iframe) return;
 
     btn.addEventListener("click", () => {
-      // crear overlay + modal
       const backdrop = document.createElement("div");
       backdrop.className = "embed-fs-backdrop";
       const modal = document.createElement("div");
       modal.className = "embed-fs-modal";
-      modal.innerHTML = `<button class="embed-fs-close" aria-label="Cerrar">Cerrar ✕</button>`;
+      modal.innerHTML = `<button class="embed-fs-close" aria-label="Close">Close ✕</button>`;
 
-      // clonar iframe (no “robamos” el del layout)
       const clone = document.createElement("iframe");
       clone.src = iframe.src;
-      clone.title = (iframe.title || "Explorador") + " (pantalla completa)";
+      clone.title = (iframe.title || "Explorer") + " (fullscreen)";
       clone.setAttribute("allowfullscreen", "");
       clone.setAttribute("loading", "eager");
       modal.appendChild(clone);
 
-      // agregar al DOM
       document.body.append(backdrop, modal);
 
-      // BLOQUEO de scroll (robusto en desktop + iOS)
       document.documentElement.classList.add("embed-fs-show", "modal-open");
       document.body.classList.add("modal-open");
       document.documentElement.style.overflow = "hidden";
@@ -31,15 +27,10 @@ export function setupEmbedFullscreen(selector = ".js-gee-fs") {
       const onKeydown = (e) => { if (e.key === "Escape") close(); };
 
       function close() {
-        // 1) Quitar locks de scroll INMEDIATO
         document.documentElement.classList.remove("embed-fs-show", "modal-open");
         document.body.classList.remove("modal-open");
         document.documentElement.style.overflow = "";
-
-        // 2) limpiar listeners
         document.removeEventListener("keydown", onKeydown);
-
-        // 3) animar salida breve y remover nodos
         backdrop.style.opacity = "0";
         modal.style.opacity = "0";
         modal.style.transform = "scale(.98)";

@@ -1,0 +1,35 @@
+<section id="sar-explainer" class="container pad">
+  <h2 class="h2 center">What is SAR?</h2>
+
+  <div class="sar-demo">
+    <div class="scene"
+      data-bg="https://images.unsplash.com/photo-1469122312224-c5846569feb1?w=1200&auto=format&fit=crop&fm=webp&q=60">
+      <div id="sar-map" class="map-fill"></div>
+      <div class="sweep"></div>
+    </div>
+
+    <div class="panel">
+      <p class="text">
+        <b>SAR</b> sends microwaves and measures the <b>echo</b>. It works <b>day or night</b> and
+        <b>penetrates clouds/smoke</b>. The echo varies by target: <b>water</b> (low),
+        <b>vegetation</b> (medium), <b>rough soil</b> (high).
+      </p>
+
+      <div class="toggles">
+        <label><input type="radio" name="mode" value="visible"> Optical mode</label>
+        <label><input type="radio" name="mode" value="sar" checked> SAR mode</label>
+
+        <select id="polar" title="Polarization">
+          <option value="VV">VV polarization</option>
+          <option value="VH">VH polarization</option>
+        </select>
+      </div>
+
+      <ul class="text" style="line-height:1.7;margin:.5rem 0 0">
+        <li><b>Water</b>: weak echo (dark).</li>
+        <li><b>Vegetation</b>: medium echo; increases in <b>VH</b> (volume scattering).</li>
+        <li><b>Rough soil</b>: high echo; textures stand out in <b>VV</b>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
