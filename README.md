@@ -12,8 +12,18 @@ Our goal is to download and analyze **multi-frequency** or **multi-polarization 
 ## Our Project
 Using SAR and NDVI imagery from Sentinel-1, Sentinel-2, PALSAR-2, SAOCOM, and Biomass (P-band) satellites, we analyze how fires caused by livestock producers have transformed the wetland ecosystem of the Paraná River Delta. Our goal is to show that these practices harm not only biodiversity and natural resources but also the livestock trade economic returns. We processed public SAR and NDVI datasets through Google Earth Engine, focusing on surface vegetation (VH), roughness (VV), forest biomass (HH), forest volume (HV), and vegetative vigor (NDVI). The study reveals that burning reduces soil permeability, increasing flood risk and erosion, which raises logistical costs along the Paraná waterway and affects cattle transport during floods, and, augmenting the cuantity of floods because of it water permeability. Temporal analysis shows that post-fire regrowth consists mainly of low-biomass grasslands replacing diverse native flora. We created an interactive web platform with visualizations and an app built with Google Earth Engine, offering two sections: one for livestock producers (who does not have a technical undesrtandment) and another for ilustrated audiences. Users can explore different satellite layers, visualize temporal changes, and access guides and FAQs aimed at promoting awareness and sustainable land management.
 
-### Webpage
-https://concientisar.netlify.app/
+## Links
+### [Webpage](https://concientisar.netlify.app/)
+
+### Español
+[Documentación](https://docs.google.com/document/d/1Nx9t3hA60h5Nn-RzJ81RPYQccmkUzeToLPm-4Y6EEoQ/edit?tab=t.0)
+
+[Presentación en Canva](https://www.canva.com/design/DAG08WusUsk/yP19EbOqC3J06iXx6a4B5A/edit)
+
+### English
+[Documentation](https://docs.google.com/document/d/1zuwalp1RLlBQ7OiOp45CiqLKuLuXwLLyjW36oFyg-o4/edit?tab=t.0#heading=h.rotbcpd371ow)
+
+[Canva presentation](https://www.canva.com/design/DAG0-iVtSLM/UXop92kCNR3CilhTLpky-A/edit)
 
 ## Project Details
 Our platform is a Google Earth Engine web application that performs multi-temporal, multi-sensor remote sensing analysis of wildfires in the Paraná River Delta. The system integrates four complementary data sources to overcome the limitations of single-sensor approaches in wetland environments.
